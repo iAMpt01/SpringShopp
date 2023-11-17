@@ -8,6 +8,6 @@ public class HelloController {
 
     @RequestMapping
     public String helloWord() {
-        return "Prima Pagina";
+        return "Dashboard";
     }
 }
