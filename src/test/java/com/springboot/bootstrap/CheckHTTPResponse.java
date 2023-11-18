@@ -17,10 +17,25 @@ public class CheckHTTPResponse {
     @Autowired
     private TestRestTemplate testRestTemplate;
 
+
     @Test
-    public void shouldPassIfStringMatches() {
+    public void shouldPassIfStringMatche() {
         assertEquals("Hwllo!!",
                 testRestTemplate.getForObject("http://localhost:" + port + "/", String.class));
+
+    }
+
+    @Test
+    public void shouldPassForRegisterEndpoint() {
+        assertEquals("Response for /register",
+                testRestTemplate.getForObject("http://localhost:" + port + "/register", String.class));
+
+    }
+
+    @Test
+    public void shouldPassForLoginEndpoint() {
+        assertEquals("Response for /login",
+                testRestTemplate.getForObject("http://localhost:" + port + "/login", String.class));
 
     }
 }

@@ -7,115 +7,147 @@
     <title>Spring Shop</title>
 </head>
 <body>
-<div class="container mt-5">
-    <h1 th:text="${message}"></h1>
-
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="https://via.placeholder.com/150" alt="Produs 1">
-                <div class="card-body">
-                    <h5 class="card-title">Nume Produs 1</h5>
-                    <p class="card-text">Descriere succintă a produsului.</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Detalii</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Adaugă în coș</button>
+        <!-- Bara laterală stângă -->
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+
+                <!-- Logo -->
+                <img src="link-catre-logo.png" alt="Logo" class="img-fluid mb-3">
+
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Cos de produse
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Conținut principal -->
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <h1 th:text="${message}"></h1>
+
+            <div class="row">
+                <!-- Cardurile cu produse rămân neschimbate -->
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" src="https://via.placeholder.com/150" alt="Produs 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Nume Produs 1</h5>
+                            <p class="card-text">Descriere succintă a produsului.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Detalii</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Adaugă în coș</button>
+                                </div>
+                                <small class="text-muted">Preț: $19.99</small>
+                            </div>
                         </div>
-                        <small class="text-muted">Preț: $19.99</small>
                     </div>
                 </div>
-            </div>
-        </div>
 
-
-        <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="https://via.placeholder.com/150" alt="Produs 2">
-                <div class="card-body">
-                    <h5 class="card-title">Nume Produs 2</h5>
-                    <p class="card-text">Descriere succintă a produsului.</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Detalii</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Adaugă în coș</button>
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" src="https://via.placeholder.com/150" alt="Produs 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Nume Produs 1</h5>
+                            <p class="card-text">Descriere succintă a produsului.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Detalii</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Adaugă în coș</button>
+                                </div>
+                                <small class="text-muted">Preț: $19.99</small>
+                            </div>
                         </div>
-                        <small class="text-muted">Preț: $29.99</small>
                     </div>
                 </div>
-            </div>
-        </div>
 
-
-        <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="https://via.placeholder.com/150" alt="Produs 3">
-                <div class="card-body">
-                    <h5 class="card-title">Nume Produs 3</h5>
-                    <p class="card-text">Descriere succintă a produsului.</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Detalii</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Adaugă în coș</button>
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" src="https://via.placeholder.com/150" alt="Produs 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Nume Produs 1</h5>
+                            <p class="card-text">Descriere succintă a produsului.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Detalii</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Adaugă în coș</button>
+                                </div>
+                                <small class="text-muted">Preț: $19.99</small>
+                            </div>
                         </div>
-                        <small class="text-muted">Preț: $39.99</small>
                     </div>
                 </div>
-            </div>
-        </div>
 
-
-        <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="https://via.placeholder.com/150" alt="Produs 3">
-                <div class="card-body">
-                    <h5 class="card-title">Nume Produs 3</h5>
-                    <p class="card-text">Descriere succintă a produsului.</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Detalii</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Adaugă în coș</button>
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" src="https://via.placeholder.com/150" alt="Produs 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Nume Produs 1</h5>
+                            <p class="card-text">Descriere succintă a produsului.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Detalii</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Adaugă în coș</button>
+                                </div>
+                                <small class="text-muted">Preț: $19.99</small>
+                            </div>
                         </div>
-                        <small class="text-muted">Preț: $39.99</small>
                     </div>
                 </div>
-            </div>
-        </div>
 
-
-        <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="https://via.placeholder.com/150" alt="Produs 3">
-                <div class="card-body">
-                    <h5 class="card-title">Nume Produs 3</h5>
-                    <p class="card-text">Descriere succintă a produsului.</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Detalii</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Adaugă în coș</button>
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" src="https://via.placeholder.com/150" alt="Produs 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Nume Produs 1</h5>
+                            <p class="card-text">Descriere succintă a produsului.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Detalii</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Adaugă în coș</button>
+                                </div>
+                                <small class="text-muted">Preț: $19.99</small>
+                            </div>
                         </div>
-                        <small class="text-muted">Preț: $39.99</small>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="https://via.placeholder.com/150" alt="Produs 4">
-                <div class="card-body">
-                    <h5 class="card-title">Nume Produs 4</h5>
-                    <p class="card-text">Descriere succintă a produsului.</p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Detalii</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Adaugă în coș</button>
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" src="https://via.placeholder.com/150" alt="Produs 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Nume Produs 1</h5>
+                            <p class="card-text">Descriere succintă a produsului.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Detalii</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Adaugă în coș</button>
+                                </div>
+                                <small class="text-muted">Preț: $19.99</small>
+                            </div>
                         </div>
-                        <small class="text-muted">Preț: $49.99</small>
                     </div>
                 </div>
+
+                <!-- Adaugă aici celelalte carduri cu produse -->
+
             </div>
-        </div>
+        </main>
     </div>
 </div>
 
