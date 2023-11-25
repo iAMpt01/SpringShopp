@@ -2,12 +2,10 @@ package com.controller.service;
 
 import com.controller.repository.UserRepository;
 import com.controller.web.dto.UserRegistrationDto;
-import model.Role;
-import model.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.controller.model.Role;
+import com.controller.model.User;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 @Service

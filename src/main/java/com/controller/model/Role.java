@@ -1,4 +1,4 @@
-package model;
+package com.controller.model;
 
 import javax.persistence.*;
 
@@ -13,6 +13,10 @@ public class Role {
 
     public Role(String name) {
         this.name = name;
+    }
+
+    public Role() {
+
     }
 
     public Long getId() {
