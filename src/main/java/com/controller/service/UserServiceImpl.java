@@ -4,6 +4,8 @@ import com.controller.repository.UserRepository;
 import com.controller.web.dto.UserRegistrationDto;
 import com.controller.model.Role;
 import com.controller.model.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -25,5 +27,10 @@ public class UserServiceImpl implements UserService {
                 registrationDto.getPassword(), Arrays.asList(new Role("ROLE_USER"))
                 );
         return userRepository.save(user);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        return null;
     }
 }
