@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +22,7 @@
                         <a class="nav-link active" href="/">
                             Home
                         </a>
+
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
@@ -34,7 +35,7 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <h1 th:text="${message}"></h1>
-
+           Welcome <span sec:authentification="principal.username">User</span>
             <div class="row">
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
