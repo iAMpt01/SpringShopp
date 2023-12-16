@@ -11,22 +11,16 @@
     <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
             <div class="sidebar-sticky">
-
-
                 <img th:src="@{/images/logo.png}" alt="Logo" class="img-fluid mb-1" style="max-width: 70px; max-height: 70px;">
-
-
-
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link active" href="/">
                             Home
                         </a>
-
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/cart">
-                            Cos de produse
+                            Coș de produse
                         </a>
                     </li>
                 </ul>
@@ -35,8 +29,10 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <h1 th:text="${message}"></h1>
-           Welcome <span sec:authentification="principal.username">User</span>
+            Welcome <span sec:authentication="principal.username">User</span>
             <div class="row">
+
+                <!-- Produs 1 -->
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
                         <img class="card-img-top" th:src="@{/images/img1.jpg}" alt="Produs 1">
@@ -54,90 +50,26 @@
                     </div>
                 </div>
 
+                <!-- Produs 2 -->
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
-                        <img class="card-img-top" th:src="@{/images/img2.jpg}" alt="Produs 1">
+                        <img class="card-img-top" th:src="@{/images/img2.jpg}" alt="Produs 2">
                         <div class="card-body">
                             <h5 class="card-title">Mascarpone</h5>
                             <p class="card-text">Mascarpone este o brânză proaspătă cu smântână dublă, cu o grăsime neobișnuit de mare, respectiv de 80%.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-outline-secondary">Detalii</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Adaugă în coș</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary add-to-cart-btn" data-product-name="Mascarpone" data-product-price="65.74">Adaugă în coș</button>
                                 </div>
-                                <small class="text-muted">Preț: 65,74 lei</small>
+                                <small class="text-muted">Preț: 65.74 lei</small>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="card mb-4 box-shadow">
-                        <img class="card-img-top" th:src="@{/images/img3.jpg}" alt="Produs 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Detergent</h5>
-                            <p class="card-text">Detergent lichid Dero + capsule, miros de levantica.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Detalii</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Adaugă în coș</button>
-                                </div>
-                                <small class="text-muted">Preț: $19.99</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Alte produse ... -->
 
-                <div class="col-md-4">
-                    <div class="card mb-4 box-shadow">
-                        <img class="card-img-top" th:src="@{/images/img4.jpg}" alt="Produs 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Tchibo Exclusive</h5>
-                            <p class="card-text">Cafea Tchibo Exclusive, 250 g Pentru a crea un gust unic.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Detalii</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Adaugă în coș</button>
-                                </div>
-                                <small class="text-muted">Preț: 75,99 lei</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card mb-4 box-shadow">
-                        <img class="card-img-top" th:src="@{/images/img5.jpg}" alt="Produs 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Zahar</h5>
-                            <p class="card-text">Zahar alb cristal 1kg, marele clasic al gamei Margaritar.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Detalii</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Adaugă în coș</button>
-                                </div>
-                                <small class="text-muted">Preț: 5,00 lei</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card mb-4 box-shadow">
-                        <img class="card-img-top" th:src="@{/images/img6.jpg}" alt="Produs 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Croissant</h5>
-                            <p class="card-text">Croissant cu crema de vanielie Boromir. Aromat, pufos si delicos. </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Detalii</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Adaugă în coș</button>
-                                </div>
-                                <small class="text-muted">Preț: 1,99 lei</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </main>
     </div>
@@ -146,5 +78,26 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Adaugă un eveniment de clic pentru fiecare buton "Adaugă în coș"
+        document.querySelectorAll('.add-to-cart-btn').forEach(function (button) {
+            button.addEventListener('click', function () {
+                var productName = this.getAttribute('data-product-name');
+                var productPrice = parseFloat(this.getAttribute('data-product-price'));
+                addToCart(productName, productPrice);
+            });
+        });
+    });
+
+    function addToCart(productName, productPrice) {
+        // Adaugă produsul în local storage
+        var storedItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        storedItems.push({ productName: productName, productPrice: productPrice });
+        localStorage.setItem('cartItems', JSON.stringify(storedItems));
+        alert("Produsul a fost adăugat în coș!");
+    }
+</script>
 </body>
 </html>

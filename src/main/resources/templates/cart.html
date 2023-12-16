@@ -14,11 +14,20 @@
             <!-- Aici vor fi afișate produsele din coș -->
         </ul>
         <p id="cart-total">Total: 0 lei</p>
+        <button id="clear-cart-btn" onclick="clearCart()">Șterge Coș</button>
         <button id="checkout-btn" onclick="checkout()">Checkout</button>
     </div>
 </div>
 
 <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Afiseaza produsele din local storage in coș
+        var storedItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        storedItems.forEach(function (item) {
+            addToCart(item.productName, item.productPrice);
+        });
+    });
+
     function checkout() {
         // Poți adăuga aici logica pentru procesul de checkout, cum ar fi trimiterea comenzii către server
         alert("Comanda a fost plasată! Mulțumim pentru cumpărături!");
@@ -31,6 +40,8 @@
             cartItemsList.removeChild(cartItemsList.firstChild);
         }
         updateCartTotal(0);
+        // Șterge produsele din local storage
+        localStorage.removeItem('cartItems');
     }
 
     function addToCart(productName, productPrice) {
