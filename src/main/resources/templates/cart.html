@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Coș de cumpărături</title>
+</head>
+<body>
+<div class="container">
+    <div id="cart-container">
+        <h3>Coș de cumpărături</h3>
+        <ul id="cart-items-list">
+            <!-- Aici vor fi afișate produsele din coș -->
+        </ul>
+        <p id="cart-total">Total: 0 lei</p>
+        <button id="checkout-btn" onclick="checkout()">Checkout</button>
+    </div>
+</div>
+
+<script>
+    function checkout() {
+        // Poți adăuga aici logica pentru procesul de checkout, cum ar fi trimiterea comenzii către server
+        alert("Comanda a fost plasată! Mulțumim pentru cumpărături!");
+        clearCart();
+    }
+
+    function clearCart() {
+        const cartItemsList = document.getElementById('cart-items-list');
+        while (cartItemsList.firstChild) {
+            cartItemsList.removeChild(cartItemsList.firstChild);
+        }
+        updateCartTotal(0);
+    }
+
+    function addToCart(productName, productPrice) {
+        const cartItemsList = document.getElementById('cart-items-list');
+        const cartItem = document.createElement('li');
+        cartItem.innerHTML = `${productName} - ${productPrice.toFixed(2)} lei`;
+        cartItemsList.appendChild(cartItem);
+        updateCartTotal(getCartTotal() + productPrice);
+    }
+
+    function getCartTotal() {
+        const cartTotal = document.getElementById('cart-total').innerText;
+        return parseFloat(cartTotal.replace('Total: ', '').replace(' lei', ''));
+    }
+
+    function updateCartTotal(newTotal) {
+        const cartTotal = document.getElementById('cart-total');
+        cartTotal.innerText = `Total: ${newTotal.toFixed(2)} lei`;
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

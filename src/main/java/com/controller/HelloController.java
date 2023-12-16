@@ -18,4 +18,10 @@ public class HelloController {
         model.addAttribute("message", "Dashboard");
         return "dashboard";
     }
+
+    @RequestMapping("/cart")
+    public String Cart(Model model) {
+        model.addAttribute("message", "Cart");
+        return "cart";
+    }
 }

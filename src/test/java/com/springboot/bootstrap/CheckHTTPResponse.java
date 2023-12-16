@@ -38,4 +38,11 @@ public class CheckHTTPResponse {
                 testRestTemplate.getForObject("http://localhost:" + port + "/login", String.class));
 
     }
+
+    @Test
+    public void shouldPassForCartEndpoint() {
+        assertEquals("Response for /cart",
+                testRestTemplate.getForObject("http://localhost:" + port + "/cart", String.class));
+
+    }
 }
