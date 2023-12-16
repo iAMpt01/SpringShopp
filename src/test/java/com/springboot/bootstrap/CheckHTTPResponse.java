@@ -45,4 +45,9 @@ public class CheckHTTPResponse {
                 testRestTemplate.getForObject("http://localhost:" + port + "/cart", String.class));
 
     }
+    public void shouldPassForComenziEndpoint() {
+        assertEquals("Response for /comenzi",
+                testRestTemplate.getForObject("http://localhost:" + port + "/comenzi", String.class));
+
+    }
 }

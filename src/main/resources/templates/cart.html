@@ -7,15 +7,44 @@
     <title>Coș de cumpărături</title>
 </head>
 <body>
-<div class="container">
-    <div id="cart-container">
-        <h3>Coș de cumpărături</h3>
-        <ul id="cart-items-list">
-            <!-- Aici vor fi afișate produsele din coș -->
-        </ul>
-        <p id="cart-total">Total: 0 lei</p>
-        <button id="clear-cart-btn" onclick="clearCart()">Șterge Coș</button>
-        <button id="checkout-btn" onclick="checkout()">Checkout</button>
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <img th:src="@{/images/logo.png}" alt="Logo" class="img-fluid mb-1" style="max-width: 70px; max-height: 70px;">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">
+                            Acasa
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart">
+                            Coș de produse
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/comenzi">
+                            Comenzi
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <div class="container">
+                <div id="cart-container" class="mx-auto">
+                    <h3>Coș de cumpărături</h3>
+                    <ul id="cart-items-list">
+                        <!-- Aici vor fi afișate produsele din coș -->
+                    </ul>
+                    <p id="cart-total">Total: 0 lei</p>
+                    <button id="clear-cart-btn" onclick="clearCart()">Șterge Coș</button>
+                    <button id="checkout-btn" onclick="checkout()">Checkout</button>
+                </div>
+            </div>
+        </main>
     </div>
 </div>
 

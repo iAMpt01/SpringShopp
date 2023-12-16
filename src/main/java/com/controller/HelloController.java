@@ -24,4 +24,9 @@ public class HelloController {
         model.addAttribute("message", "Cart");
         return "cart";
     }
+    @RequestMapping("/comenzi")
+    public String Comenzi(Model model) {
+        model.addAttribute("message", "Comenzi");
+        return "comenzi";
+    }
 }
