@@ -60,30 +60,43 @@
     function checkout() {
         var storedItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
-        // Construiește obiectul comanda
-        var comanda = {
-            email: "adresa@email.com", // Poți obține adresa de email de la utilizator sau să o stochezi în alt mod
-            produse: storedItems.map(item => item.productName).join(', '),
-            total: getCartTotal()
-        };
+        // Obține informațiile despre utilizatorul curent de la backend
+        fetch('/api/user')
+            .then(response => response.text())
+            .then(userEmail => {
+                if (userEmail) {
+                    // Utilizează adresa de e-mail obținută pentru a construi comanda
+                    var comanda = {
+                        email: userEmail,
+                        produse: storedItems.map(item => item.productName).join(', '),
+                        total: getCartTotal()
+                    };
 
-        // Trimite comanda la backend
-        fetch('/api/comenzi', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(comanda)
-        })
-            .then(response => response.json())
-            .then(data => {
-                alert("Comanda a fost plasată! Mulțumim pentru cumpărături!");
-                clearCart();
+                    // Trimite comanda la backend
+                    fetch('/api/comenzi', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(comanda)
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            alert("Comanda a fost plasată! Mulțumim pentru cumpărături!");
+                            clearCart();
+                        })
+                        .catch(error => {
+                            console.error('Eroare:', error);
+                        });
+                } else {
+                    alert("Trebuie să fii autentificat pentru a plasa o comandă!");
+                }
             })
             .catch(error => {
-                console.error('Eroare:', error);
+                console.error('Eroare la obținerea informațiilor despre utilizator:', error);
             });
     }
+
 
     function clearCart() {
         const cartItemsList = document.getElementById('cart-items-list');
