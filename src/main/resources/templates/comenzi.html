@@ -53,44 +53,6 @@
     </div>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Afiseaza comenzile din local storage
-        displayOrders();
-    });
-
-    function displayOrders() {
-        const ordersList = document.getElementById('orders-list');
-        const storedOrders = JSON.parse(localStorage.getItem('orders')) || [];
-
-        ordersList.innerHTML = ''; // Golește lista înainte de a o re-umple
-
-        storedOrders.forEach(function (order) {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${order.email}</td>
-                <td>${order.products.join(', ')}</td>
-                <td>${order.total.toFixed(2)} lei</td>
-                <td>
-                    <button class="btn btn-sm btn-danger" onclick="deleteOrder(${storedOrders.indexOf(order)})">Șterge</button>
-                </td>
-            `;
-            ordersList.appendChild(row);
-        });
-    }
-
-    function deleteOrder(index) {
-        const storedOrders = JSON.parse(localStorage.getItem('orders')) || [];
-        storedOrders.splice(index, 1); // Șterge comanda din listă
-        localStorage.setItem('orders', JSON.stringify(storedOrders));
-        displayOrders(); // Reafișează comenzile actualizate
-    }
-
-    function clearOrders() {
-        localStorage.removeItem('orders'); // Șterge toate comenzile din local storage
-        displayOrders(); // Golește lista de comenzi afișată
-    }
-</script>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
