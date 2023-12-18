@@ -7,45 +7,50 @@
     <title>Comenzi</title>
 </head>
 <body>
-<nav class="col-md-2 d-none d-md-block bg-light sidebar">
-    <div class="sidebar-sticky">
-        <img th:src="@{/images/logo.png}" alt="Logo" class="img-fluid mb-1" style="max-width: 70px; max-height: 70px;">
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link active" href="/">
-                    Acasa
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/cart">
-                    Coș de produse
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/comenzi">
-                    Comenzi
-                </a>
-            </li>
-        </ul>
-    </div>
-</nav>
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+<!--                <img th:src="@{/images/logo.png}" alt="Logo" class="img-fluid mb-1" style="max-width: 70px; max-height: 70px;">-->
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">
+                            Acasa
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart">
+                            Coș de produse
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/comenzi">
+                            Comenzi
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-<div class="container">
-    <h2>Comenzi</h2>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Email</th>
-            <th>Produse</th>
-            <th>Total</th>
-            <th>Acțiuni</th>
-        </tr>
-        </thead>
-        <tbody id="orders-list">
-        <!-- Aici vor fi afișate comenzile -->
-        </tbody>
-    </table>
-    <button id="clear-orders-btn" class="btn btn-danger" onclick="clearOrders()">Șterge Comenzi</button>
+        <main role="main" class="col-md-10">
+            <div class="container">
+                <h2>Comenzi</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Produse</th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody id="orders-list">
+                    <!-- Aici vor fi afișate comenzile -->
+                    </tbody>
+                </table>
+                <button id="clear-orders-btn" class="btn btn-danger float-right" onclick="clearOrders()">Șterge Comenzi</button>
+            </div>
+        </main>
+    </div>
 </div>
 
 <script>
@@ -66,7 +71,9 @@
                 <td>${order.email}</td>
                 <td>${order.products.join(', ')}</td>
                 <td>${order.total.toFixed(2)} lei</td>
-                <td><button class="btn btn-sm btn-danger" onclick="deleteOrder(${storedOrders.indexOf(order)})">Șterge</button></td>
+                <td>
+                    <button class="btn btn-sm btn-danger" onclick="deleteOrder(${storedOrders.indexOf(order)})">Șterge</button>
+                </td>
             `;
             ordersList.appendChild(row);
         });

@@ -45,7 +45,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                "/registration**",
                "/js/**",
                "/css/**",
-               "/img/**"
+               "/img/**",
+                       "/api/comenzi"
 
        ).permitAll()
                .anyRequest().authenticated()
@@ -59,8 +60,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                .clearAuthentication(true)
                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                .logoutSuccessUrl("/login?logout")
-               .permitAll();
-
+               .permitAll()
+               .and()
+               .csrf().disable();
+        // Debug logs
+        http.exceptionHandling().accessDeniedHandler((request, response, accessDeniedException) -> {
+            response.sendRedirect("/access-denied"); 
+        });
     }
-
 }

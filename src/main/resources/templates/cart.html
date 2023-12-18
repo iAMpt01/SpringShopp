@@ -11,7 +11,7 @@
     <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
             <div class="sidebar-sticky">
-                <img th:src="@{/images/logo.png}" alt="Logo" class="img-fluid mb-1" style="max-width: 70px; max-height: 70px;">
+<!--                <img th:src="@{/images/logo.png}" alt="Logo" class="img-fluid mb-1" style="max-width: 70px; max-height: 70px;">-->
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link active" href="/">
@@ -58,9 +58,31 @@
     });
 
     function checkout() {
-        // Poți adăuga aici logica pentru procesul de checkout, cum ar fi trimiterea comenzii către server
-        alert("Comanda a fost plasată! Mulțumim pentru cumpărături!");
-        clearCart();
+        var storedItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        // Construiește obiectul comanda
+        var comanda = {
+            email: "adresa@email.com", // Poți obține adresa de email de la utilizator sau să o stochezi în alt mod
+            produse: storedItems.map(item => item.productName).join(', '),
+            total: getCartTotal()
+        };
+
+        // Trimite comanda la backend
+        fetch('/api/comenzi', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(comanda)
+        })
+            .then(response => response.json())
+            .then(data => {
+                alert("Comanda a fost plasată! Mulțumim pentru cumpărături!");
+                clearCart();
+            })
+            .catch(error => {
+                console.error('Eroare:', error);
+            });
     }
 
     function clearCart() {
