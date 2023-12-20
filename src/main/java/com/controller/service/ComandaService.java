@@ -5,8 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
+import java.util.Collections;
+import java.util.List;
 
 @Service
 public class ComandaService {
@@ -28,6 +29,17 @@ public class ComandaService {
             e.printStackTrace();
             // Handle the exception or log it appropriately
             return null;
+        }
+    }
+
+    @Transactional(readOnly = true)
+    public List<Comanda> getAllComenzi() {
+        try {
+            return comandaRepository.findAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+            // Handle the exception or log it appropriately
+            return Collections.emptyList();
         }
     }
 }
