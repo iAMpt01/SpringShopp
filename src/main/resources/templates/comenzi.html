@@ -47,77 +47,77 @@
                     <!-- Aici vor fi afișate comenzile -->
                     </tbody>
                 </table>
-                <button id="clear-orders-btn" class="btn btn-danger float-right" onclick="clearOrders()">Șterge Comenzi</button>
-            </div>
-        </main>
-    </div>
-</div>
+                <!--  <button id="clear-orders-btn" class="btn btn-danger float-right" onclick="clearOrders()">Șterge Comenzi</button>-->
+              </div>
+          </main>
+      </div>
+  </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<script>
-    // Funcție pentru a încărca comenzile
-    function loadOrders() {
-        $.ajax({
-            url: '/api/comenzi',
-            method: 'GET',
-            success: function (data) {
-                displayOrders(data);
-            },
-            error: function (error) {
-                console.error('Eroare la încărcarea comenzilor:', error);
-            }
-        });
-    }
+  <script>
+      // Funcție pentru a încărca comenzile
+      function loadOrders() {
+          $.ajax({
+              url: '/api/comenzi',
+              method: 'GET',
+              success: function (data) {
+                  displayOrders(data);
+              },
+              error: function (error) {
+                  console.error('Eroare la încărcarea comenzilor:', error);
+              }
+          });
+      }
 
-    // Funcție pentru a afișa comenzile în tabel
-    function displayOrders(orders) {
-        var ordersList = $('#orders-list');
-        ordersList.empty(); // Golește conținutul anterioară al tabelului
+      // Funcție pentru a afișa comenzile în tabel
+      function displayOrders(orders) {
+          var ordersList = $('#orders-list');
+          ordersList.empty(); // Golește conținutul anterioară al tabelului
 
-        // Iterează prin fiecare comandă și adaugă-o în tabel
-        orders.forEach(function (order) {
-            var row = '<tr>' +
-                '<td>' + order.email + '</td>' +
-                '<td>' + order.produse + '</td>' +
-                '<td>' + order.total + '</td>' +
-                '<td><button class="btn btn-danger" onclick="deleteOrder(' + order.id + ')">Șterge</button></td>' +
-                '</tr>';
-            ordersList.append(row);
-        });
-    }
+          // Iterează prin fiecare comandă și adaugă-o în tabel
+          orders.forEach(function (order) {
+              var row = '<tr>' +
+                  '<td>' + order.email + '</td>' +
+                  '<td>' + order.produse + '</td>' +
+                  '<td>' + order.total + '</td>' +
+                  '<td><button class="btn btn-danger" onclick="deleteOrder(' + order.id + ')">Șterge</button></td>' +
+                  '</tr>';
+              ordersList.append(row);
+          });
+      }
 
-    // Funcție pentru a șterge o comandă
-    function deleteOrder(orderId) {
-        $.ajax({
-            url: '/api/comenzi/' + orderId,
-            method: 'DELETE',
-            success: function () {
-                loadOrders(); // Reîncarcă comenzile după ștergere
-            },
-            error: function (error) {
-                console.error('Eroare la ștergerea comenzii:', error);
-            }
-        });
-    }
+      // Funcție pentru a șterge o comandă
+      function deleteOrder(orderId) {
+          $.ajax({
+              url: '/api/comenzi/' + orderId,
+              method: 'DELETE',
+              success: function () {
+                  loadOrders(); // Reîncarcă comenzile după ștergere
+              },
+              error: function (error) {
+                  console.error('Eroare la ștergerea comenzii:', error);
+              }
+          });
+      }
 
 
-    // Funcție pentru a șterge comenzile selectate
-    function clearOrders() {
-        // Implementează logica pentru ștergerea comenzilor pe server
-        // ...
+      // Funcție pentru a șterge comenzile selectate
+      function clearOrders() {
+          // Implementează logica pentru ștergerea comenzilor pe server
+          // ...
 
-        // După ștergerea cu succes, poți reîncărca comenzile
-        loadOrders();
-    }
+          // După ștergerea cu succes, poți reîncărca comenzile
+          loadOrders();
+      }
 
-    // La încărcarea paginii, apelează funcția pentru a încărca comenzile
-    $(document).ready(function () {
-        loadOrders();
-    });
-</script>
+      // La încărcarea paginii, apelează funcția pentru a încărca comenzile
+      $(document).ready(function () {
+          loadOrders();
+      });
+  </script>
 
-</body>
-</html>
+  </body>
+  </html>
