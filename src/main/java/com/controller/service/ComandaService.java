@@ -42,4 +42,9 @@ public class ComandaService {
             return Collections.emptyList();
         }
     }
+
+    @Transactional
+    public void stergeComanda(Long comandaId) {
+        comandaRepository.deleteById(comandaId);
+    }
 }

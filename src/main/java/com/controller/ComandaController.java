@@ -2,10 +2,9 @@ package com.controller;
 import com.controller.model.Comanda;
 import com.controller.service.ComandaService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,5 +26,16 @@ public class ComandaController {
     @GetMapping("/api/comenzi")
     public List<Comanda> getAllComenzi() {
         return comandaService.getAllComenzi();
+    }
+
+    @DeleteMapping("/api/comenzi/{comandaId}")
+    public ResponseEntity<String> stergeComanda(@PathVariable Long comandaId) {
+        try {
+            comandaService.stergeComanda(comandaId);
+            return new ResponseEntity<>("Comanda a fost ștearsă cu succes.", HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>("Eroare la ștergerea comenzii.", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }

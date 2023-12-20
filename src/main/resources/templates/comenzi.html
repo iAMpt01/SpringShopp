@@ -11,7 +11,6 @@
     <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
             <div class="sidebar-sticky">
-                <!-- <img th:src="@{/images/logo.png}" alt="Logo" class="img-fluid mb-1" style="max-width: 70px; max-height: 70px;"> -->
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link active" href="/">
@@ -41,6 +40,7 @@
                         <th>Email</th>
                         <th>Produse</th>
                         <th>Total</th>
+                        <th>Acțiuni</th> <!-- Adaugă o coloană pentru butoanele de acțiuni -->
                     </tr>
                     </thead>
                     <tbody id="orders-list">
@@ -56,7 +56,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
 
 <script>
     // Funcție pentru a încărca comenzile
@@ -84,12 +83,28 @@
                 '<td>' + order.email + '</td>' +
                 '<td>' + order.produse + '</td>' +
                 '<td>' + order.total + '</td>' +
+                '<td><button class="btn btn-danger" onclick="deleteOrder(' + order.id + ')">Șterge</button></td>' +
                 '</tr>';
             ordersList.append(row);
         });
     }
 
-    // Funcție pentru a șterge comenzile (aceasta este doar o funcție de exemplu, vei avea nevoie de logică server pentru a implementa aceasta)
+    // Funcție pentru a șterge o comandă
+    function deleteOrder(orderId) {
+        $.ajax({
+            url: '/api/comenzi/' + orderId,
+            method: 'DELETE',
+            success: function () {
+                loadOrders(); // Reîncarcă comenzile după ștergere
+            },
+            error: function (error) {
+                console.error('Eroare la ștergerea comenzii:', error);
+            }
+        });
+    }
+
+
+    // Funcție pentru a șterge comenzile selectate
     function clearOrders() {
         // Implementează logica pentru ștergerea comenzilor pe server
         // ...
@@ -99,11 +114,10 @@
     }
 
     // La încărcarea paginii, apelează funcția pentru a încărca comenzile
-    jQuery(document).ready(function () {
+    $(document).ready(function () {
         loadOrders();
     });
 </script>
-
 
 </body>
 </html>
